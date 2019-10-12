@@ -24,8 +24,5 @@ Path_to_your_PhenoData <- args[2]
 #######################
 Path_to_your_Excelfiles<- "~/Documents/Data-Comorbidity-gene_networks/"
 source_path <- paste("ls",Path_to_your_Excelfiles)
-source_path <- paste("ls")
-file_names <- system(source_path)
-file_names <- get(system(source_path))
-system("ls")
-system("ls /home/rmejia/Documents/")
+
+dir(Path_to_your_Excelfiles)
