@@ -1,0 +1,25 @@
+#!/bin/bash
+sudo apt-get install xlsx2csv
+
+echo "Positional Parameters"
+echo '$0 = ' $0
+echo '$1 = ' $1
+echo '$2 = ' $2
+echo '$3 = ' $3
+
+my_folder=$1
+#my_folder=~/Documentos/Data_Comorbility_networks/TABLAS\ DE\ LOS\ 3\ NODOS\ SELECCIONADOS/TABLA\ DEL\ NODO\ I25.8/I25.8\ INFO\ DEL\ NODO/
+
+results_folder=$2
+#results_folder=~/Documentos/Data_Comorbility_networks/Results
+mkdir -p "$results_folder"
+
+for names in "$my_folder"*.xlsx ; do
+        xlsx2csv -d "tab" "$names" > $results_folder/"$(basename "$names" .xlsx).tsv"
+	echo "$(basename "$names" .xlsx).tsv"
+done;
+
+#for names in ../Results/Splited/Matrices/Subexpression_matrix_*from_TCGA_.tsv ; do
+#new_names=${names%_.tsv}
+#	echo $new_names;
+#done;
