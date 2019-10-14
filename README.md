@@ -11,4 +11,5 @@ Then from tsv to jaccard results:
 ```sh folder_tsvs_2_jaccard_graphs.sh /path/to/your/brandnew/tsvs /path/to/your/2ndcolumn(gene-symbols)/extracted/from/your/tsvs/  /path/to/store/your/Jaccard/results/ Label_for_this_job 21```
 
 ###### Note:   
-the number 21 is the example of your pdf definition
+The las number (21) will be the parameter heigth/weigth of the pdf() function from R
+The space between arguments should be only one blank space
