@@ -1,6 +1,9 @@
 #!/bin/bash
 sudo apt-get install xlsx2csv
 
+# The first argument in the path to your xlsx files
+# The second argument is the path where you want to save the resulting tsv files
+
 my_folder=$1
 #my_folder=~/Documentos/Data_Comorbility_networks/TABLAS\ DE\ LOS\ 3\ NODOS\ SELECCIONADOS/TABLA\ DEL\ NODO\ I25.8/I25.8\ INFO\ DEL\ NODO/
 

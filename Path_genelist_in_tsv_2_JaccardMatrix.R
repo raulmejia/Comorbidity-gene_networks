@@ -25,6 +25,10 @@ if (!require("ggplot2")) {
   library("ggplot2")
 }
 
+if (!require("reshape2")) {
+  install.packages("reshape2")
+  library("reshape2")
+}
 
 #################################################
 ### Functions to be used
@@ -37,7 +41,7 @@ myjaccard <- function(A, B){
 ###########################################
 ### Data given by the user
 ###########################################
-# Path_to_your_files <- c("/home/raulmejia/Documentos/Data_Comorbility_networks/Results_columns_of_genes/") ; Path_to_Results <- c("/home/raulmejia/Documentos/Data_Comorbility_networks/Jaccard/NODO_I25.8/"); my_label <- "NODE_I25.8" ; pdf_definition_w_h = 35
+# Path_to_your_files <- c("/home/raulmejia/Documentos/Data_Comorbility_networks/tsv_columns_of_genes") ; Path_to_Results <- c("/home/raulmejia/Documentos/Data_Comorbility_networks/Jaccard/NODO_I25.8_2/"); my_label <- "NODE_I25.8" ; pdf_definition_w_h = 35
 Path_to_your_files <- args[1] # the path to your tsv files
 Path_to_Results <- args[2] # Path were you wan to save the jaccard matrix and graph
 my_label <- args[3] # a label for your results
@@ -50,17 +54,14 @@ your_files <- your_files[grepl(".tsv",your_files)] # protection against folder w
 
 list_of_dfs <- list()
 for( k in 1:length(your_files) ){
-  print(k)
   list_of_dfs[[k]] <- read.table(your_files[k], stringsAsFactors = FALSE, skip = 1 )
 }
 names( list_of_dfs ) <- File_names
-list_of_dfs[1]
+
 
 list_of_genes_per_file <- list()
 for( w in File_names){
   list_of_genes_per_file[[w]] <- unlist( strsplit( unique( as.character(as.matrix(list_of_dfs[w][[1]]) ) ) , split='|', fixed=TRUE))
-  print(w)
-  print(list_of_genes_per_file[w])
 }
 
 # eliminating duplicated genes
@@ -94,5 +95,3 @@ ggplot(data = melted_jaccard_matrix, aes(x=Var1, y=Var2, fill=value)) +
 dev.off()
 
 write.table(jaccard_matrix, file= paste0(Norm_Path_Results,"/", my_label,"jaccard_matrix.tsv"), sep="\t", quote=FALSE, row.names = TRUE, col.names = TRUE)
-?write.table
-jaccard_matrix[1:20,1:20]
