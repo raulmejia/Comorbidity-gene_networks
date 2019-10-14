@@ -4,7 +4,7 @@ Exploring the known relationships between comorbidities and genes through a netw
 ----------
 ## Example of use:   
 
-first from xlsx to tsv:  
+First from xlsx to tsv (just in case):  
 ```sh Convert_all_xlsx_inside_a_folder_2_tsv_linux-debianoids.sh /path/to/your/excel/files/ /path/to/your/brandnew/tsvs```   
 
 Then from tsv to jaccard results:  
